@@ -1,56 +1,3 @@
-// Function funcionalidad Modal
-(function begin() {
-  $('.modal').modal();
-})();
-
-// Function Time
-const timeDate = () => {
-  let data = new Date();
-  let time = data.getHours() + ':' + data.getMinutes();
-  let timeAbsolute = '';
-
-  if (data.getHours() <= 12) {
-    timeAbsolute = time + ' AM';
-  } else {
-    timeAbsolute = time + ' PM';
-  }
-  return timeAbsolute;
-};
-
-// Modal post
-$('#post-modal').on('click', () => {
-  $('#post-modal').addClass('waves-effect waves-light modal-trigger');
-
-  const modalPostContent = `<div class="row">
-        <div class="col offset-l4 post-header">
-            <input type="text" name="" value="" placeholder="Title" class="title post-header" autofocus>
-        </div>
-        <textarea name="text" id="texto" class="text-area-height" placeholder="¿Qué estas pensando?" type="text"></textarea>
-        <hr></div>`;
-
-  const modalPostFooter = `<a id="btn-post" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat teal darken-1 white-text">
-        <i class="material-icons right">send</i>Public</a>`;
-
-  $('.modal-content').html(modalPostContent);
-  $('.modal-footer').html(modalPostFooter);
-
-  $('#btn-post').on('click', post);
-});
-
-// Post de texto
-function post() {
-  const postEstructure = `<div class="styleBox z-depth-5 col l5">
-    <div class="title"><h5 class="center-align">${$('.post-header input').val()}</h5></div>
-    <div class="styleLetter"><p class="styleLetterP">${$('#texto').val()}</p></div>
-    <div class="right-align"><span class="styleLetter">${timeDate()}</span></div>
-    </div>`;
-  $('#post').prepend(postEstructure);
-  $('.post-header input').val(' ');
-  $('#texto').val(' ');
-}
-
-$('#btn-post').on('click', post);
-/*add */
 function image() {
   let imagen = $('#img-guardar');
 
@@ -278,4 +225,3 @@ $('#video-modal').on('click', function() {
   $('#file-select-video').change(format);
   $('#btn-video').on('click', videoAudio);
 });
-
